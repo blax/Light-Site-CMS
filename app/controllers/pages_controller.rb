@@ -40,7 +40,7 @@ class PagesController < ApplicationController
 #      redirect_to :controller => 'pages', :action => 'blog', :user => User.find(@page.user_id).login, :language => session[:language].short_name and true
 #    else
       unless @page.nil?
-        @main_position = @page.layout_template.positions.find(:first, :conditions => ["main_position = 1"])
+        @main_position = @page.layout_template.positions.find(:first, :conditions => ["main_position = ?", true])
         @items = @page.blocks.find(:first, :conditions => ["position_id = ?",@main_position.id]).items
         if @main_position.page_pagination > 0 and !@items.nil?
           @items = @items.paginate :page => params[:page], :per_page => @main_position.page_pagination, :order => '"order" DESC'

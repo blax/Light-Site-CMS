@@ -29,10 +29,8 @@ module PagesHelper
   end
 
   def visible_items(items)
-    counter = 0
-    items.each{|i|
-      counter += 1 if i.status.name == "Visible"
-    }
-    counter
+    items.select{ |i| 
+      i.status.name == "Visible"
+    }.count
   end
 end
