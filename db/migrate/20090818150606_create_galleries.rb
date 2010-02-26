@@ -4,7 +4,7 @@ class CreateGalleries < ActiveRecord::Migration
       t.string :name
       t.timestamps
     end
-    ExtensionType.create(:name => "Gallery", :controller_name => "galleries")
+    
   end
 
   def self.down

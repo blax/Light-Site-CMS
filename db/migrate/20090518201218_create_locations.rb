@@ -7,7 +7,7 @@ class CreateLocations < ActiveRecord::Migration
 
       t.timestamps
     end
-    ExtensionType.create(:name => "Map", :controller_name => "locations")
+    
   end
 
   def self.down

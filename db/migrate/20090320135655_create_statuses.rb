@@ -5,9 +5,6 @@ class CreateStatuses < ActiveRecord::Migration
 
       t.timestamps
     end
-    Status.create( :name => "Visible" )
-    Status.create( :name => "Hidden" )
-    Status.create( :name => "Development" )
   end
 
   def self.down

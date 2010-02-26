@@ -11,11 +11,7 @@ class CreateRoles < ActiveRecord::Migration
     add_index "roles_users", "role_id"
     add_index "roles_users", "user_id"
 
-    Role.create( :name => 'admin')
-    user = User.create( :name => 'admin', :login => 'admin', :password => 'administrator', :password_confirmation => 'administrator', :email => 'admin@admin.pl', :activated_at => Date.today)
-    user.roles << Role.find_by_name('admin')
-    user.activate!
-    user.save!
+    
   end
 
   def self.down

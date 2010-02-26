@@ -8,7 +8,7 @@ class CreatePlainTexts < ActiveRecord::Migration
 
       t.timestamps
     end
-    ExtensionType.create(:name => "Text", :controller_name => "plain_texts")
+    
   end
 
   def self.down

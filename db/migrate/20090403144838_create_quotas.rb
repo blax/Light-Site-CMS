@@ -8,7 +8,7 @@ class CreateQuotas < ActiveRecord::Migration
 
       t.timestamps
     end
-    ExtensionType.create(:name => "Quotation", :controller_name => "quotas")
+    
   end
 
   def self.down

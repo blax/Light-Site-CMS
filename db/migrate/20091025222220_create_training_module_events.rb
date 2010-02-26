@@ -6,7 +6,7 @@ class CreateTrainingModuleEvents < ActiveRecord::Migration
       t.timestamp :event_date
       t.timestamps
     end
-    ExtensionType.create(:name => "Training", :controller_name => "trainings")
+    
   end
 
   def self.down

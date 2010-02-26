@@ -7,7 +7,7 @@ class CreateMenus < ActiveRecord::Migration
       t.timestamps
     end
 
-    ExtensionType.create(:name => "Menu", :controller_name => "menus")
+    
   end
 
   def self.down

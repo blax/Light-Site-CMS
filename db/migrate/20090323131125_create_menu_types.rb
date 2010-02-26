@@ -7,10 +7,10 @@ class CreateMenuTypes < ActiveRecord::Migration
       t.timestamps
     end
 
-    MenuType.create(:name => "Horizontal main menu", :type_no => '1')
-    MenuType.create(:name => "Vertical main menu", :type_no => '2')
-    MenuType.create(:name => "Vertical main menu with children", :type_no => '3')
-    MenuType.create(:name => "Childrens menu", :type_no => '4')
+    
+    
+    
+    
 
   end
 

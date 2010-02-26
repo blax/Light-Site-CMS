@@ -4,6 +4,7 @@ class CreateExtensionTypes < ActiveRecord::Migration
       t.string :name
       t.string :controller_name
 
+
       t.timestamps
     end
   end

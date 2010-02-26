@@ -1,4 +1,4 @@
-class AddIsBlodToPage < ActiveRecord::Migration
+class AddIsBlogToPage < ActiveRecord::Migration
   def self.up
     add_column :pages, :is_blog, :boolean
   end
