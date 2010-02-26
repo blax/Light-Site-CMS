@@ -1,28 +1,27 @@
-<h1>Editing quota</h1>
+<h1><%= t 'editing quotation' %></h1>
 
-<% form_for(@quota) do |f| %>
+<% form_for(item.resource, :html => { :name => "quota_#{item.resource.id}" }) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :content %><br />
+    <%= f.label t 'content' %><br />
     <%= f.ckeditor_field :content %>
   </p>
   <p>
-    <%= f.label :speaker %><br />
+    <%= f.label t 'speaker' %><br />
     <%= f.text_field :speaker %>
   </p>
   <p>
-    <%= f.label :company %><br />
+    <%= f.label t 'company' %><br />
     <%= f.text_field :company %>
   </p>
   <p>
-    <%= f.label :language_id %><br />
+    <%= f.label t 'language' %><br />
     <%= f.text_field :language_id %>
   </p>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit_with_javascript( t('update')) %>
   </p>
 <% end %>
 
-<%= link_to 'Show', @quota %> |
-<%= link_to 'Back', quotas_path %>
+<%= link_to t('back'), :back %>
