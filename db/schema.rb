@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091103172255) do
+ActiveRecord::Schema.define(:version => 20100226131022) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "parent_id"
@@ -25,12 +25,17 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.integer  "plain_text_id"
   end
 
+  add_index "attachments", ["plain_text_id"], :name => "attachments_plain_text_id_fk"
+
   create_table "blocks", :force => true do |t|
     t.integer  "page_id"
     t.integer  "position_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "blocks", ["page_id"], :name => "blocks_page_id_fk"
+  add_index "blocks", ["position_id"], :name => "blocks_position_id_fk"
 
   create_table "comments", :force => true do |t|
     t.string   "subject"
@@ -44,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "comments", ["user_id"], :name => "comments_user_id_fk"
 
   create_table "events", :force => true do |t|
     t.string   "header"
@@ -83,6 +90,8 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.string   "name"
   end
 
+  add_index "gallery_photos", ["gallery_id"], :name => "gallery_photos_gallery_id_fk"
+
   create_table "items", :force => true do |t|
     t.integer  "block_id"
     t.integer  "user_id"
@@ -95,6 +104,10 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "items", ["block_id"], :name => "items_block_id_fk"
+  add_index "items", ["status_id"], :name => "items_status_id_fk"
+  add_index "items", ["user_id"], :name => "items_user_id_fk"
 
   create_table "languages", :force => true do |t|
     t.string   "name"
@@ -132,6 +145,8 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.datetime "updated_at"
   end
 
+  add_index "menus", ["menu_type_id"], :name => "menus_menu_type_id_fk"
+
   create_table "news", :force => true do |t|
     t.string   "header"
     t.text     "content"
@@ -157,6 +172,11 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.boolean  "is_blog"
   end
 
+  add_index "pages", ["language_id"], :name => "pages_language_id_fk"
+  add_index "pages", ["layout_template_id"], :name => "pages_layout_template_id_fk"
+  add_index "pages", ["status_id"], :name => "pages_status_id_fk"
+  add_index "pages", ["user_id"], :name => "pages_user_id_fk"
+
   create_table "plain_texts", :force => true do |t|
     t.string   "header"
     t.text     "content"
@@ -178,6 +198,8 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.integer  "layout_template_id"
   end
 
+  add_index "positions", ["layout_template_id"], :name => "positions_layout_template_id_fk"
+
   create_table "quotas", :force => true do |t|
     t.text     "content"
     t.string   "speaker"
@@ -186,6 +208,8 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "quotas", ["language_id"], :name => "quotas_language_id_fk"
 
   create_table "roles", :force => true do |t|
     t.string "name"
@@ -225,6 +249,8 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.string   "unit"
   end
 
+  add_index "subevents", ["event_id"], :name => "subevents_event_id_fk"
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -248,6 +274,8 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.string   "university"
   end
 
+  add_index "training_module_events", ["training_module_id"], :name => "training_module_events_training_module_id_fk"
+
   create_table "training_modules", :force => true do |t|
     t.string   "name"
     t.text     "content"
@@ -255,6 +283,8 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "training_modules", ["training_id"], :name => "training_modules_training_id_fk"
 
   create_table "trainings", :force => true do |t|
     t.string   "header"
@@ -277,5 +307,40 @@ ActiveRecord::Schema.define(:version => 20091103172255) do
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
+
+  add_foreign_key "attachments", "plain_texts", :name => "attachments_plain_text_id_fk"
+
+  add_foreign_key "blocks", "pages", :name => "blocks_page_id_fk"
+  add_foreign_key "blocks", "positions", :name => "blocks_position_id_fk"
+
+  add_foreign_key "comments", "users", :name => "comments_user_id_fk"
+
+  add_foreign_key "gallery_photos", "galleries", :name => "gallery_photos_gallery_id_fk"
+
+  add_foreign_key "items", "blocks", :name => "items_block_id_fk"
+  add_foreign_key "items", "statuses", :name => "items_status_id_fk"
+  add_foreign_key "items", "users", :name => "items_user_id_fk"
+
+  add_foreign_key "menus", "menu_types", :name => "menus_menu_type_id_fk"
+
+  add_foreign_key "pages", "languages", :name => "pages_language_id_fk"
+  add_foreign_key "pages", "layout_templates", :name => "pages_layout_template_id_fk"
+  add_foreign_key "pages", "statuses", :name => "pages_status_id_fk"
+  add_foreign_key "pages", "users", :name => "pages_user_id_fk"
+
+  add_foreign_key "positions", "layout_templates", :name => "positions_layout_template_id_fk"
+
+  add_foreign_key "quotas", "languages", :name => "quotas_language_id_fk"
+
+  add_foreign_key "roles_users", "roles", :name => "roles_users_role_id_fk"
+  add_foreign_key "roles_users", "users", :name => "roles_users_user_id_fk"
+
+  add_foreign_key "subevents", "events", :name => "subevents_event_id_fk"
+
+  add_foreign_key "taggings", "tags", :name => "taggings_tag_id_fk"
+
+  add_foreign_key "training_module_events", "training_modules", :name => "training_module_events_training_module_id_fk"
+
+  add_foreign_key "training_modules", "trainings", :name => "training_modules_training_id_fk"
 
 end
