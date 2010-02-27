@@ -29,6 +29,8 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
     config.gem "matthuhiggins-foreigner", 
                 :lib => "foreigner", :source => "http://gemcutter.org"
+    config.gem 'collectiveidea-delayed_job', 
+                :lib => 'delayed_job', :source => 'http://gems.github.com'
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
