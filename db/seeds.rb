@@ -6,8 +6,10 @@ ExtensionType.create([
   {:name => "Event", :controller_name => "events"},
   {:name => "Map", :controller_name => "locations"},
   {:name => "Gallery", :controller_name => "galleries"},
-  {:name => "Training", :controller_name => "trainings"}
+  {:name => "Training", :controller_name => "trainings"},
+  {:name => "Newsletter", :controller_name => "newsletters"}
 ])
+
 
 Role.create( :name => 'admin')
 user = User.create( :name => 'admin', :login => 'admin', :password => 'administrator', :password_confirmation => 'administrator', :email => 'admin@admin.pl', :activated_at => Date.today)

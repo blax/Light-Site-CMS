@@ -102,11 +102,11 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.xml
   def destroy
-    url = @item.block.page.get_page_path
+    #url = @item.block.page.get_page_path
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to url }
+      format.html { redirect_to :back }
       format.xml  { head :ok }
     end
   end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100226131022) do
+ActiveRecord::Schema.define(:version => 20100226225239) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "parent_id"
@@ -154,6 +154,14 @@ ActiveRecord::Schema.define(:version => 20100226131022) do
     t.datetime "updated_at"
   end
 
+  create_table "newsletters", :force => true do |t|
+    t.string   "name"
+    t.string   "header"
+    t.integer  "language_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", :force => true do |t|
     t.string   "name"
     t.integer  "language_id"
@@ -250,6 +258,14 @@ ActiveRecord::Schema.define(:version => 20100226131022) do
   end
 
   add_index "subevents", ["event_id"], :name => "subevents_event_id_fk"
+
+  create_table "subscriptions", :force => true do |t|
+    t.string   "address"
+    t.boolean  "active"
+    t.integer  "newsletter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"

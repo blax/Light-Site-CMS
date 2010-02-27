@@ -1,0 +1,23 @@
+<h1><%= t('new newsletter') %></h1>
+
+<% form_for(@newsletter, :html => { :name => "newsletter_" }) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label t('header') %><br />
+    <%= f.text_field :header %>
+  </p>
+  <p>
+    <%= f.label t('name') %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label t('language') %><br />
+    <%= f.collection_select( :language_id, Language.find(:all), :id, :name) -%>
+  </p>
+  <p>
+    <%= f.submit_with_javascript( t('create')) %>
+  </p>
+<% end %>
+
+<%= link_to t('back'), :back %>

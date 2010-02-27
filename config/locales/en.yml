@@ -70,6 +70,7 @@ en:
     blog text: Post
     gallery: Gallery
     training: Training
+    newsletter: Newsletter
 
   admin:
     connect language: Connect language
@@ -119,7 +120,12 @@ en:
   new blog text: New post
   editing blog_text: Editing post
   editing quotation: Editing quotation
-
+  new newsletter: New newsletter
+  email: e-mail  
+  error: error
+  subscribed: Subscribed
+  invalid email: Provided e-mail address is invalid.
+  email already exists: This e-mail address has been already used.
   page:
     parent: Parent page
     new: New page

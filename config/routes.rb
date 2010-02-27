@@ -161,6 +161,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :subevents
   map.resources :events
+  map.resources :newsletters
+  map.resources :subscriptions
   map.resources :quotas
   map.connect "/quota/add",
     :controller => "quotas",
