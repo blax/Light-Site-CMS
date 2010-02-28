@@ -34,15 +34,17 @@ module ActionView
       end
 
       def ckeditor_field(object_name, method, options = {})
-        script =""
-          "<script type=\"text/javascript\">
-            if(editor)
+        script = "<script type=\"text/javascript\">
+          $(document).ready(function(){
+          var editor_#{method};
+            if(editor_#{method})
               return;
-            editor = CKEDITOR.replace( '#{object_name}_#{method}', {
+            editor_#{method} = CKEDITOR.replace( '#{object_name}_#{method}', {
                     filebrowserBrowseUrl : '/browser/get_folders',
                     filebrowserUploadUrl : '/browser/quick_upload',
                     filebrowserImageWindowWidth : '640',
                     filebrowserImageWindowHeight : '480'
+            });
             });
           </script>"
 
@@ -53,6 +55,28 @@ module ActionView
           tag = InstanceTag.new(object_name, method, self, options.delete(:object)).to_text_area_tag(options)
          tag+script
       end
+      
+      def ckeditor_field_tag(method, options = {})
+        script ="<script type=\"text/javascript\">
+        $('##{method}').html = 'HELLLLLLLLOOOO';
+        </script>"
+        "$(document).ready(function(){
+            var editor_#{method};
+            if(editor_#{method})
+              return;
+            editor_#{method} = CKEDITOR.replace( '#{method}', {
+                    filebrowserBrowseUrl : '/browser/get_folders',
+                    filebrowserUploadUrl : '/browser/quick_upload',
+                    filebrowserImageWindowWidth : '640',
+                    filebrowserImageWindowHeight : '480'
+            });
+          });
+          </script>"
+          tag = content_tag :textarea, '', 
+            {"name" => method, "id" => sanitize_to_id(method) }.update(options.stringify_keys)
+          tag+script
+      end
+      
 
     end
 
