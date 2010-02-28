@@ -169,7 +169,6 @@
 .admin_left{
     display: inline;
     float: left;
-    color: white;
     width: auto;
     color: #FFFFFF;
 }
@@ -240,7 +239,8 @@
     max-height: 265px;
     max-width: 100%;
     overflow: auto;
-    background: gray;
+    background: #808080;
+    margin-top: 17px;
 }
 
 
@@ -277,9 +277,4 @@
 .error_div li{
     float:none; 
 }
-
-
-
-
-
 
