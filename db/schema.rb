@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100226225239) do
+ActiveRecord::Schema.define(:version => 20100301094706) do
 
   create_table "attachments", :force => true do |t|
     t.integer  "parent_id"
@@ -51,6 +51,19 @@ ActiveRecord::Schema.define(:version => 20100226225239) do
   end
 
   add_index "comments", ["user_id"], :name => "comments_user_id_fk"
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "events", :force => true do |t|
     t.string   "header"
@@ -156,7 +169,8 @@ ActiveRecord::Schema.define(:version => 20100226225239) do
 
   create_table "newsletters", :force => true do |t|
     t.string   "name"
-    t.string   "header"
+    t.string   "label"
+    t.text     "footer"
     t.integer  "language_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -260,9 +274,10 @@ ActiveRecord::Schema.define(:version => 20100226225239) do
   add_index "subevents", ["event_id"], :name => "subevents_event_id_fk"
 
   create_table "subscriptions", :force => true do |t|
-    t.string   "address"
-    t.boolean  "active"
-    t.integer  "newsletter_id"
+    t.string   "address",                         :null => false
+    t.boolean  "active",        :default => true, :null => false
+    t.string   "secret",                          :null => false
+    t.integer  "newsletter_id",                   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

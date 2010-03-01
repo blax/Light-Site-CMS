@@ -162,6 +162,12 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :subevents
   map.resources :events
   map.resources :newsletters
+  map.unsubscribe '/unsubscribe/:secret',
+                  :controller => 'subscriptions',
+                  :action => 'unsubscribe'
+  map.unsubscribed_info '/unsubscribed/',
+                        :controller => 'subscriptions',
+                        :action => 'unsubscribed_info'
   map.resources :subscriptions
   map.resources :quotas
   map.connect "/quota/add",
@@ -220,6 +226,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :languages
 
+  map.mailer '/mailer', :controller => 'newsletters', :action => 'deliver'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'

@@ -1,15 +1,6 @@
 class NewslettersController < ItemsController
-  skip_filter [:init_new,:find_item,:authorize]
+  skip_filter [:init_new, :find_item, :authorize]
   require_role "admin", :except => "show"
-  
-  def show
-    @newsletter = Newsletter.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @newsletter }
-    end
-  end
 
   # GET /events/new
   # GET /events/new.xml
@@ -27,14 +18,12 @@ class NewslettersController < ItemsController
     @newsletter = Newsletter.find(params[:id])
   end
 
+  def deliver
+    @newsletter = Newsletter.find(params[:newsletter_id])
+    @newsletter.send_later :deliver, params
+    flash[:notice] = t('newsletter_send')                                            
+    redirect_to :back
+  end
+
+  
 end
-
-
-
-
-#show : widoczna formatka do wprowazenia emaila
-#new: wprowadzenie nagłówka
-#edit: edycja nagłówka
-#
-#add: dodanie wprowadzonego do bazy
-#

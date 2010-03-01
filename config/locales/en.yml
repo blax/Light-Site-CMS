@@ -150,7 +150,8 @@ en:
   add: Add
   new news: New news
   editing news: Editing news
-
+  send_newsletter: Send Newsletter
+  
   blog:
     new: New blog
     edit: Editing blog
@@ -247,5 +248,4 @@ en:
   cant_change_this_element: This element cannot be changed or data are false.
 
  
-
-  
+  footer: "Footer"

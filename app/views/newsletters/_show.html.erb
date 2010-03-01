@@ -1,15 +1,13 @@
-<h3><%= item.resource.header %></h3>
-<div id>
-<% remote_form_for (Subscription.new, :html => {:name => "subscription_"} ) do |f| %>
+<h3><%= item.resource.label %></h3>
+<% remote_form_for(Subscription.new, :html => {:name => "subscription_"} ) do |f| %>
   <div id="subscr_msg_<%=item.resource.id%>">
   </div>
   <%= f.hidden_field :newsletter_id, :value => item.resource.id %>
   <p>
-    <%= f.label t('email') %><br />
+    <%= f.label t('email') %>:<br />
     <%= f.text_field :address %>
   </p>
   <p>
     <%= f.submit t('add') %>
   </p>
 <% end %>
-

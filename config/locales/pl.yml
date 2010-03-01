@@ -1,3 +1,4 @@
+
 pl:
   activerecord:
     errors:
@@ -152,6 +153,7 @@ pl:
   subscribed: Zapisano
   invalid email: Nieprawidłowy adres e-mail.
   email already exists: Ten adres e-mail jest już zajęty.
+  send_newsletter: Wysyłka newslettera.
 
 
   blog:
@@ -254,3 +256,9 @@ pl:
   cant_change_this_element: Nie można zmienić tego elementu, bądź wprowadzone dane są niepoprawne.
 
 
+  footer: "Stopka"
+  label: "Etykieta"
+  subscribe_newsletter: "Zapisz się do newslettera"
+  new_newsletter: "Nowy newsletter"
+  newsletter: "Newsletter"
+  newsletter_send: "Newsletter został wysłany."

@@ -1,0 +1,38 @@
+<div id="newsletters_errors" style="padding:5px;">
+  
+</div>
+
+<h1><%= t 'send_newsletter' %></h1>
+
+<% form_tag mailer_url  do %>
+  <p>
+    <%= label_tag (t 'subject') %><br />
+    <%= text_field_tag :subject %>
+  </p>  
+  <p>
+    <%= label_tag (t 'content') %><br />
+    <%= text_area_tag :content %> 
+     <script type="text/javascript"> 
+       $(document).ready(function(){ 
+           $('#ext_li_admin_panel li').click(function(){ 
+               if($(this).children("a").html() == "newsletters"){ 
+                   var editorID = $('#content').attr("id"); 
+                   var instance = CKEDITOR.instances[editorID]; 
+                   if (instance) { CKEDITOR.remove(instance); } 
+                   $('#content').ckeditor({filebrowserBrowseUrl : '/browser/get_folders', 
+                     filebrowserUploadUrl : '/browser/quick_upload', 
+                     filebrowserImageWindowWidth : '400',
+                     filebrowserImageWindowHeight : '200'}); 
+             } 
+         }); 
+     }); 
+   </script> 
+  </p>
+  <p>
+    <%= label_tag t('newsletter') %><br />
+    <%= select_tag 'newsletter_id', options_for_select(Newsletter.all.collect{ |n| [n.name, n.id] }) %>
+  </p>
+  <p>
+    <%= submit_tag (t 'send') %>
+  </p>
+<% end %>

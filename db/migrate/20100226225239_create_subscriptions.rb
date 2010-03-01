@@ -1,9 +1,10 @@
 class CreateSubscriptions < ActiveRecord::Migration
   def self.up
     create_table :subscriptions do |t|
-      t.string :address
-      t.boolean :active
-      t.integer :newsletter_id
+      t.string :address, :null => false
+      t.boolean :active, :default => true, :null => false
+      t.string :secret, :null => false
+      t.integer :newsletter_id, :null => false
       
       t.timestamps
     end

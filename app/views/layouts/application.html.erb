@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -9,6 +11,7 @@
     <%= render :partial => "shared/styles_and_scripts" %>
   </head>
   <body <%= yield :body_options %> >
+    <%= ckeditor_field_tag :cokolwiek %>
     <% if admin? %>
       <div id="admin-activator">
         <%= render(:partial => "shared/admin", :locals => {:page => @page}) %>

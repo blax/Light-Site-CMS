@@ -7,4 +7,11 @@ class Subscription < ActiveRecord::Base
     :message => "email already exists"
       
   belongs_to :newsletter
+
+  named_scope :active, :conditions => ['active = ?', true]
+
+  def get_hash
+    Digest::MD5.hexdigest(address + newsletter_id.to_s + id.to_s)
+  end
+  
 end

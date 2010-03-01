@@ -4,17 +4,14 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label t('header') %><br />
-    <%= f.text_field :header %>
+    <%= f.label t('label') %><br />
+    <%= f.text_field :label, :value => t('subscribe_newsletter') %>
   </p>
   <p>
     <%= f.label t('name') %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :value => t('new_newsletter') %>
   </p>
-  <p>
-    <%= f.label t('language') %><br />
-    <%= f.collection_select( :language_id, Language.find(:all), :id, :name) -%>
-  </p>
+  
   <p>
     <%= f.submit_with_javascript( t('create')) %>
   </p>

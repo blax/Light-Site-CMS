@@ -77,19 +77,20 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector, :forum_observer
   config.active_record.observers = :user_observer
 
-  config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_charset = 'utf-8'
-  config.action_mailer.smtp_settings = {
-     :address => "poczta.interia.pl",
-     :port => 25,
-     :domain => "bitt.megiteam.pl",
-     :user_name => "wcttbitt",
-     :password => "wcttwctt21!",
-     :authentication => :plain
-  }
-
-  config.action_mailer.raise_delivery_errors = true
-
+  config.action_mailer.raise_delivery_errors = true 
+  config.action_mailer.delivery_method = :smtp 
+  config.action_mailer.smtp_settings = { 
+    :address => "smtp.gmail.com", 
+    :port => 587, 
+    :domain => "gmail.com", 
+    :user_name => "rormailertest@gmail.com", 
+    :password => "ror0ror0", 
+    :authentication => :login, 
+    :enable_starttls_auto => true #This line is must to ensure the tls for Gmail 
+ } 
+ config.action_mailer.default_content_type = "text/html"
+ config.action_mailer.default_url_options = { :host => "www.example.com" }
 end
 require "form_helper_extensions"
 require "will_paginate"

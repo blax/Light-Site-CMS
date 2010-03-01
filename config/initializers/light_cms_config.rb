@@ -14,6 +14,7 @@ ExtensionManager.map do |ext|
   ext.push("layouts", "admin_panel", {:type => "AjaxListExtension", :actions => ["show"], :partial => "/layout_templates/layouts"})
   ext.push("commentable", "plain_text", {:type => "AttributesExtension", :actions => ["show"], :partial => "/comments/comments"})
   ext.push("commentable_edit", "plain_text", {:type => "AttributesExtension", :actions => ["new","edit"], :partial => "/comments/commentable"})
-  ext.push("general", "admin_panel", {:type => "AjaxListExtension", :actions => ["show"], :partial => "/shared/general_admin"})
+  #ext.push("general", "admin_panel", {:type => "AjaxListExtension", :actions => ["show"], :partial => "/shared/general_admin"})
+  ext.push("newsletters", "admin_panel", {:type => "AjaxListExtension", :actions => ["show"], :partial => "/newsletters/admin"})
 end
 

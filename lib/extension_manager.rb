@@ -19,7 +19,6 @@ module ExtensionManager
 
     def render(options = {})
       html = ""
-      isok = %w{ ant bear cat}.any? {|word| word.eql? "dupa"}
       exts = extensions.select{|k,i| i.position == options[:position] and i.actions.any?{|e| e.eql? options[:action]} and i.enable}
       EXT_OPTIONS.each{|option|
         tmp = exts.select{|i| i[1].ext_type.eql? option}

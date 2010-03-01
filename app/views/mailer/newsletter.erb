@@ -1,0 +1,5 @@
+<%= @content %>
+Dostałeś tą wiadomość ponieważ jesteś zapisany do listy mailingowej.
+
+Jeśli chcesz się wypisać kliknij poniższy link lub skopiuj adres do swojej przeglądarki:
+<%= url_for :host => "www.test.pl", :controller => :subscriptions, :action => :unsubscribe, :secret => @secret %>
